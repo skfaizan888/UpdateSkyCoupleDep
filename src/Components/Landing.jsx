@@ -1,0 +1,34 @@
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Cards } from "./Cards";
+import { Navigate } from "./Navigate";
+import { Login } from "./Login";
+import { Viewcards } from "./Viewcards";
+import { Favorites } from "./Favorites";
+import { ProfileStart } from "./ProfileStart";
+import BottomNav from "./BottomNav";
+import { Home } from "./Home";
+import { UserProfile } from "./UserProfile";
+import { MyProfile } from "./MyProfile";
+import { TermsCondition } from "./TermCondition";
+
+export const Landing = () => {
+  return (
+    <div>
+      <BrowserRouter>
+        <Home />
+        <Routes>
+          <Route path="/" element={<Cards />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/getstart" element={<ProfileStart />} />
+          <Route path="viewdetail" element={<Viewcards />} />
+          <Route path="profile" element={<UserProfile />} />
+          <Route path="favorate" element={<Favorites />} />
+          <Route path="myprofile" element={<MyProfile />} />
+          <Route path="term&condition" element={<TermsCondition />} />
+        </Routes>
+        <BottomNav />
+      </BrowserRouter>
+    </div>
+  );
+};

@@ -4,9 +4,10 @@ import { SearchProvider } from "./Components/SearchContext";
 function App() {
   return (
     <div className="min-h-screen bg-gray-100">
-      <SearchProvider>
+      {/* <SearchProvider>
         <Landing />
-      </SearchProvider>
+      </SearchProvider> */}
+      <h1>Hello SkyCouple</h1>
     </div>
   );
 }

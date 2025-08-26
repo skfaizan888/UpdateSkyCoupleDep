@@ -27,7 +27,7 @@ export const SearchProvider = ({ children }) => {
   const fetchCurrentSignId = async () => {
     setIsLoadingUser(true);
     try {
-      const res = await axios.post("http://localhost:7070/findsign", {
+      const res = await axios.post("https://skycouple-api.vercel.app/findsign", {
         signid,
       });
       setCurrentSignid(res.data[0]);
@@ -41,7 +41,7 @@ export const SearchProvider = ({ children }) => {
 
   const fetchFavorites = async () => {
     try {
-      const res = await axios.post("http://localhost:7070/getfavorites", {
+      const res = await axios.post("https://skycouple-api.vercel.app/getfavorites", {
         signid,
       });
       setFavorites(res.data);

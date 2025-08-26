@@ -48,7 +48,7 @@ export const Login = () => {
     }
 
     try {
-      const { data } = await axios.post("http://localhost:7070/login", {
+      const { data } = await axios.post("https://skycouple-api.vercel.app/login", {
         mobile,
         password,
       });

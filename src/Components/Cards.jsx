@@ -19,14 +19,14 @@ export const Cards = () => {
 
   const cardsPerPage = 8;
 
-  // Fetch all users once currentSignid is available
+
   useEffect(() => {
     const fetchUsers = async () => {
       if (!currentSignid) return;
 
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:7070/alluser");
+        const res = await axios.get("https://skycouple-api.vercel.app/alluser");
         const oppositeGenderUsers = res.data.filter(
           (user) => user.isActive && user.gender !== currentSignid.gender
         );

@@ -33,7 +33,7 @@ export const Navigate = () => {
     const payload = {
       signid,
     };
-    const result = await axios.post("http://localhost:7070/findsign", payload);
+    const result = await axios.post("https://skycouple-api.vercel.app/findsign", payload);
     setData(result.data.map((item) => item.fullname));
   };
 

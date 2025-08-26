@@ -27,12 +27,12 @@ export const CardItem = ({ item, favUserIds = [] }) => {
         const confirmed = window.confirm("Remove from favorites?");
         if (!confirmed) return;
 
-        await axios.post("http://localhost:7070/removefavorite", {
+        await axios.post("https://skycouple-api.vercel.app/removefavorite", {
           signid,
           favoriteUserId: item.userid,
         });
       } else {
-        await axios.post("http://localhost:7070/addfavorite", {
+        await axios.post("https://skycouple-api.vercel.app/addfavorite", {
           signid,
           favoriteUserId: item.userid,
         });

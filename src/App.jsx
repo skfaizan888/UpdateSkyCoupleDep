@@ -1,4 +1,6 @@
 import { Landing } from "./Components/Landing";
+import { Login } from "./Components/Login";
+import { ProfileStart } from "./Components/ProfileStart";
 import { SearchProvider } from "./Components/SearchContext";
 
 function App() {
@@ -7,7 +9,8 @@ function App() {
       {/* <SearchProvider>
         <Landing />
       </SearchProvider> */}
-      <h1>Hello SkyCouple</h1>
+      {/* <Login /> */}
+      <ProfileStart />
     </div>
   );
 }

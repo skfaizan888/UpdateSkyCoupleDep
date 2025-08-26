@@ -8,8 +8,8 @@ export const ProfileStart = () => {
       className="min-h-screen w-full flex items-center justify-center bg-cover bg-center relative"
       style={{
         backgroundImage:
-          // "url('https://wallpapers.com/images/hd/wedding-couple-pink-and-white-roses-xjc8hkj2q7qqfhho.jpg')",
-          "url('Public/Image/bouquet-roses-4k.jpg')",
+          "url('https://wallpapers.com/images/hd/wedding-couple-pink-and-white-roses-xjc8hkj2q7qqfhho.jpg')",
+        // "url('Public/Image/bouquet-roses-4k.jpg')",
       }}
     >
       <div className="absolute inset-0 bg-black opacity-70" />

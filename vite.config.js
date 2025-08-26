@@ -4,7 +4,7 @@ import flowbiteReact from "flowbite-react/plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
-  base:"/UpdateSkyCoupleDep",
+  base:'/UpdateSkyCoupleDep/',
   plugins: [react(), flowbiteReact(), tailwindcss()]
 
 });

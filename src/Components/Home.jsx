@@ -58,7 +58,7 @@ export const Home = () => {
                 <p className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-gray-200 leading-tight tracking-wide">
                   Interact With Your
                 </p>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-pink-500 text-2xl md:text-5xl font-[Dancing Script] drop-shadow-lg">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-pink-500 text-2xl md:text-5xl font-bold font-[Dancing Script] drop-shadow-lg">
                   Happiness!
                 </span>
               </div>

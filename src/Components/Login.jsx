@@ -87,7 +87,6 @@ export const Login = () => {
           md:fixed md:inset-0 md:flex md:items-center md:justify-center
         "
       >
-        {/* Left Section */}
         <div className="text-center text-white px-4 flex-1">
           <img
             src="https://static.vecteezy.com/system/resources/thumbnails/047/937/290/small/realistic-wedding-rings-with-flowers-element-free-png.png"
@@ -104,7 +103,6 @@ export const Login = () => {
           </p>
         </div>
 
-        {/* Right Section (Form) */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -116,7 +114,6 @@ export const Login = () => {
             Login
           </h2>
 
-          {/* Mobile Input */}
           <label className="block mb-1 text-sm font-medium">
             Mobile Number <span className="text-red-400">*</span>
           </label>
@@ -133,7 +130,6 @@ export const Login = () => {
             `}
           />
 
-          {/* Password Input */}
           <label className="block mb-1 text-sm font-medium mt-4">
             Password <span className="text-red-400">*</span>
           </label>
@@ -158,7 +154,6 @@ export const Login = () => {
             </button>
           </div>
 
-          {/* Submit Button */}
           <Button
             type="submit"
             className="w-full mt-6 bg-pink-700 text-white font-semibold rounded-full shadow-md hover:bg-pink-800"
@@ -166,7 +161,6 @@ export const Login = () => {
             Login
           </Button>
 
-          {/* Register Link */}
           {!error && (
             <p className="text-center text-sm text-white mt-4">
               Don’t have an account?{" "}
@@ -181,7 +175,6 @@ export const Login = () => {
             </p>
           )}
 
-          {/* Error Message */}
           {error && (
             <Alert color="failure" icon={HiInformationCircle} className="mt-4">
               <span className="font-medium">{error}</span>

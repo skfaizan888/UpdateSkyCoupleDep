@@ -51,19 +51,18 @@ export const CardItem = ({ item, favUserIds = [] }) => {
 
   return (
     <div
-      className="w-90 sm:w-64 md:w-72 h-80 rounded-2xl overflow-hidden relative shadow-lg cursor-pointer group"
+      className="w-90 sm:w-64 md:w-72 h-[330px] sm:h-[370px] md:h-[400px] rounded-2xl overflow-hidden relative shadow-lg cursor-pointer group bg-white"
       onClick={handleCardClick}
     >
       <img
         src={item?.img}
         alt={item?.fullname}
-        className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
+        className="w-full h-full object-contain transition-transform group-hover:scale-105 duration-300"
       />
 
-      {/* Favorite Icon */}
       <div
         onClick={(e) => {
-          e.stopPropagation(); // prevent navigation
+          e.stopPropagation();
           toggleFavorite();
         }}
         className="absolute top-2 left-2 bg-black/40 backdrop-blur-xs p-2 rounded-full z-10"
@@ -75,8 +74,8 @@ export const CardItem = ({ item, favUserIds = [] }) => {
         )}
       </div>
 
-      {/* User Info */}
-      <div className="absolute bottom-0 left-0 w-full p-4 bg-black/40 text-white">
+
+      <div className="absolute bottom-0 left-0 w-full p-4 bg-black/50 text-white">
         <h3 className="text-lg font-semibold leading-tight truncate">
           {item?.fullname}
         </h3>

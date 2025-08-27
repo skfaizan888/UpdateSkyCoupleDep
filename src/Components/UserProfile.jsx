@@ -87,7 +87,7 @@ export const UserProfile = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-md p-4">
+        <div className="bg-white rounded-xl shadow-md p-4 mb-5">
           <div className="flex justify-between items-center p-2 hover:bg-gray-100 rounded cursor-pointer">
             <span className="flex items-center gap-2">
               <TbHelpCircleFilled /> Help & Support

@@ -55,9 +55,7 @@ export const Home = () => {
             }}
           />
 
-          {/* Foreground */}
           <div className="relative z-10 grid grid-cols-12 px-4 pt-6 pb-4 gap-4">
-            {/* Header */}
             <div className="col-span-10 sm:col-span-9 flex items-center gap-2">
               <img
                 src="https://static.vecteezy.com/system/resources/thumbnails/047/937/290/small/realistic-wedding-rings-with-flowers-element-free-png.png"
@@ -72,7 +70,6 @@ export const Home = () => {
               <HiOutlineBell />
             </div>
 
-            {/* Welcome */}
             <div className="col-span-12 sm:col-span-6 sm:items-end gap-1 sm:gap-4">
               <p className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-gray-200 leading-tight tracking-wide">
                 Interact With Your
@@ -82,7 +79,6 @@ export const Home = () => {
               </span>
             </div>
 
-            {/* Search & Filter */}
             <div className="col-span-12 sm:col-span-6 mt-4">
               <div className="grid grid-cols-12 gap-3">
                 <div className="col-span-10">
@@ -141,7 +137,6 @@ export const Home = () => {
                 </div>
               )}
 
-              {/* Selected Filter Display */}
               {selectedState && selectedCity && (
                 <p className="mt-2 text-sm text-white">
                   Selected:{" "}

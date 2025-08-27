@@ -11,7 +11,6 @@ import { MdAssignmentInd } from "react-icons/md";
 
 export const MyProfile = () => {
   const { state: data } = useLocation();
-  const navigate = useNavigate();
 
   const initials = data?.fullname
     ?.split(" ")
@@ -20,7 +19,7 @@ export const MyProfile = () => {
     .toUpperCase();
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 mx-4 my-6 sm:mx-auto sm:max-w-2xl">
+    <div className="bg-white rounded-2xl shadow-lg p-6 mx-4 my-6 mb-20 sm:mx-auto sm:max-w-2xl">
       <div className="flex flex-row items-center gap-4 mb-6">
         <Avatar
           rounded

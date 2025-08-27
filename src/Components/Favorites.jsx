@@ -6,12 +6,10 @@ export const Favorites = () => {
   const { favorites, favUserIds } = useContext(SearchContext);
 
   return (
-    <div className="p-4">
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center sm:justify-items-start">
+    <div className="px-4 sm:px-6 lg:px-8 py-6">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         {favorites.map((item) => (
-          <div key={item.userid} className="w-full sm:w-auto max-w-[300px]">
-            <CardItem item={item} favUserIds={favUserIds} />
-          </div>
+          <CardItem key={item.userid} item={item} favUserIds={favUserIds} />
         ))}
       </div>
     </div>

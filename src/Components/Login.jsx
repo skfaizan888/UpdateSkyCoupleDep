@@ -59,7 +59,7 @@ export const Login = () => {
       localStorage.setItem("token", data.token);
       localStorage.setItem("signid", data.signid);
       await refreshUserData();
-      navigate("/profile");
+      navigate("/");
     } catch (e) {
       setError(e?.response?.data || "Login failed. Please try again.");
       setInputError({ mobile: true, password: true });

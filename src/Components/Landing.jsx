@@ -1,6 +1,6 @@
 // Landing.jsx
 import React from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Cards } from "./Cards";
 import { Login } from "./Login";
 import { Viewcards } from "./Viewcards";
@@ -16,29 +16,22 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 export const Landing = () => {
   return (
     <BrowserRouter>
+      <Home />
       <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
-
-        <Route path="/login" element={<Login />} />
-        <Route path="/getstart" element={<ProfileStart />} />
-        <Route path="/term&condition" element={<TermsCondition />} />
-
+        {/* ✅ Home is protected and served at "/" */}
         <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/cards"
+          path="/"
           element={
             <ProtectedRoute>
               <Cards />
             </ProtectedRoute>
           }
         />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/getstart" element={<ProfileStart />} />
+        <Route path="/term&condition" element={<TermsCondition />} />
+
         <Route
           path="/viewdetail"
           element={
@@ -73,7 +66,7 @@ export const Landing = () => {
         />
       </Routes>
 
-      {/* bottom nav can be made conditional if you don’t want it on login */}
+      {/* Show BottomNav only after login */}
       <BottomNav />
     </BrowserRouter>
   );

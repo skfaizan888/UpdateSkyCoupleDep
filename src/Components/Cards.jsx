@@ -58,9 +58,11 @@ export const Cards = () => {
 
   if (isLoadingUser || !currentSignid) {
     return (
-      <div className="flex justify-center items-center h-40">
-        <div className="animate-spin h-10 w-10 border-t-4 border-b-4 border-red-700 rounded-full">
-          Faizan Home Page
+      <div className="flex justify-center items-center h-screen ">
+        <div className="flex space-x-2">
+          <div className="w-3 h-3 bg-red-500 rounded-full animate-bounce"></div>
+          <div className="w-3 h-3 bg-pink-500 rounded-full animate-bounce [animation-delay:-0.2s]"></div>
+          <div className="w-3 h-3 bg-red-500 rounded-full animate-bounce [animation-delay:-0.4s]"></div>
         </div>
       </div>
     );
@@ -69,8 +71,12 @@ export const Cards = () => {
   return (
     <div className="p-6">
       {loading ? (
-        <div className="flex justify-center items-center h-40">
-          <div className="animate-spin h-10 w-10 border-t-4 border-b-4 border-gray-500 rounded-full"></div>
+        <div className="flex justify-center items-center h-screen ">
+          <div className="flex space-x-2">
+            <div className="w-3 h-3 bg-red-500 rounded-full animate-bounce"></div>
+            <div className="w-3 h-3 bg-pink-500 rounded-full animate-bounce [animation-delay:-0.2s]"></div>
+            <div className="w-3 h-3 bg-red-500 rounded-full animate-bounce [animation-delay:-0.4s]"></div>
+          </div>
         </div>
       ) : filteredUsers.length === 0 ? (
         <div className="text-center text-gray-600 text-lg mt-10">

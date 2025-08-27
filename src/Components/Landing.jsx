@@ -16,57 +16,29 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 export const Landing = () => {
   return (
     <BrowserRouter>
-      <Home />
       <Routes>
-        {/* ✅ Home is protected and served at "/" */}
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Cards />
-            </ProtectedRoute>
-          }
-        />
-
         <Route path="/login" element={<Login />} />
         <Route path="/getstart" element={<ProfileStart />} />
         <Route path="/term&condition" element={<TermsCondition />} />
 
+        {/* Home is now a layout wrapper */}
         <Route
-          path="/viewdetail"
+          path="/"
           element={
             <ProtectedRoute>
-              <Viewcards />
+              <Home />
             </ProtectedRoute>
           }
-        />
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <UserProfile />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/favorate"
-          element={
-            <ProtectedRoute>
-              <Favorites />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/myprofile"
-          element={
-            <ProtectedRoute>
-              <MyProfile />
-            </ProtectedRoute>
-          }
-        />
+        >
+          {/* Nested routes inside Home */}
+          <Route index element={<Cards />} />
+          <Route path="viewdetail" element={<Viewcards />} />
+          <Route path="profile" element={<UserProfile />} />
+          <Route path="favorate" element={<Favorites />} />
+          <Route path="myprofile" element={<MyProfile />} />
+        </Route>
       </Routes>
 
-      {/* Show BottomNav only after login */}
       <BottomNav />
     </BrowserRouter>
   );

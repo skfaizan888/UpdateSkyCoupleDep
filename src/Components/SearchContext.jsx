@@ -27,7 +27,10 @@ export const SearchProvider = ({ children }) => {
   const fetchCurrentSignId = async () => {
     setIsLoadingUser(true);
     try {
-      const res = await axios.post("https://skycouple-api.vercel.app/findsign", { signid });
+      const res = await axios.post(
+        "https://skycouple-api.vercel.app/findsign",
+        { signid }
+      );
       if (Array.isArray(res.data) && res.data.length > 0) {
         setCurrentSignid(res.data[0]);
       } else {
@@ -43,7 +46,10 @@ export const SearchProvider = ({ children }) => {
 
   const fetchFavorites = async () => {
     try {
-      const res = await axios.post("https://skycouple-api.vercel.app/getfavorites", { signid });
+      const res = await axios.post(
+        "https://skycouple-api.vercel.app/getfavorites",
+        { signid }
+      );
       if (Array.isArray(res.data)) {
         setFavorites(res.data);
         setFavUserIds(res.data.map((f) => String(f.userid)));
@@ -93,6 +99,7 @@ export const SearchProvider = ({ children }) => {
         fetchFavorites,
         setSignid,
         refreshUserData,
+        setCurrentSignid,
       }}
     >
       {children}

@@ -6,11 +6,11 @@ import { SearchProvider } from "./Components/SearchContext";
 function App() {
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* <SearchProvider>
-        <Landing />
-      </SearchProvider> */}
+      {/* <SearchProvider> */}
+      <Landing />
+      {/* </SearchProvider> */}
       {/* <Login /> */}
-      <ProfileStart />
+      {/* <ProfileStart /> */}
     </div>
   );
 }

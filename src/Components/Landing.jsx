@@ -30,11 +30,14 @@ export const Landing = () => {
             </ProtectedRoute>
           }
         >
-          {/* Nested routes inside Home */}
           <Route index element={<Cards />} />
           <Route path="viewdetail" element={<Viewcards />} />
+          <Route path="/favorate" element={<Favorites />}>
+            <Route path="viewdetail" element={<Viewcards />} />
+          </Route>
+
           <Route path="profile" element={<UserProfile />} />
-          <Route path="favorate" element={<Favorites />} />
+
           <Route path="myprofile" element={<MyProfile />} />
         </Route>
       </Routes>

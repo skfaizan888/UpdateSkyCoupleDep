@@ -21,7 +21,7 @@ export const Viewcards = () => {
   };
 
   return (
-    <div className="h-[70vh] bg-gradient-to-br from-gray-100 to-blue-50 py-4 px-3 sm:px-6 font-poppins">
+    <div className="min-h-[90vh] bg-gradient-to-br from-gray-100 to-blue-50 py-4 px-3 sm:px-6 font-poppins">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
         <div className="relative w-full h-[470px] sm:h-[500px] lg:h-full rounded-2xl overflow-hidden shadow-lg">
           <CustomCarousel images={item.img} interval={7000} />
@@ -39,7 +39,7 @@ export const Viewcards = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-6">
+        <div className="bg-white rounded-2xl shadow-lg p-6 mb-24">
           <div className="text-center mb-5">
             <h2 className="text-3xl font-bold text-pink-700">
               {item.fullname}

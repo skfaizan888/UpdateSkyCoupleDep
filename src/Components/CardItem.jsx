@@ -39,29 +39,27 @@ export const CardItem = ({ item, favUserIds = [] }) => {
       }
 
       setIsFavorited(!isFavorited);
-      await fetchFavorites(); // Refresh the list
+      await fetchFavorites();
     } catch (err) {
       console.error("Error updating favorites:", err);
     }
   };
 
   const handleCardClick = () => {
-    navigate("viewdetail", { state: item });
+    navigate("/viewdetail", { state: item });
   };
 
   return (
     <div
-      className="w-full h-[330px] sm:h-[370px] md:h-[400px] rounded-2xl overflow-hidden relative shadow-lg cursor-pointer group bg-white"
+      className="w-full h-[350px] sm:h-[370px] md:h-[400px] rounded-2xl overflow-hidden relative shadow-lg cursor-pointer group bg-white"
       onClick={handleCardClick}
     >
-      {/* Image */}
       <img
         src={item?.img}
         alt={item?.fullname}
         className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
       />
 
-      {/* Favorite button */}
       <div
         onClick={(e) => {
           e.stopPropagation();
@@ -76,7 +74,6 @@ export const CardItem = ({ item, favUserIds = [] }) => {
         )}
       </div>
 
-      {/* Overlay info */}
       <div className="absolute bottom-0 left-0 w-full p-4 bg-black/50 text-white">
         <h3 className="text-lg font-semibold leading-tight truncate">
           {item?.fullname}
@@ -87,7 +84,9 @@ export const CardItem = ({ item, favUserIds = [] }) => {
             {item?.city}, {item?.pincode}
           </span>
         </div>
-        <p className="text-sm text-gray-100 mt-1 truncate">{item?.occupation}</p>
+        <p className="text-sm text-gray-100 mt-1 truncate">
+          {item?.occupation}
+        </p>
       </div>
     </div>
   );

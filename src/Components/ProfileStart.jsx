@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 export const ProfileStart = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div
@@ -39,7 +39,7 @@ export const ProfileStart = () => {
 
         <div className="mt-auto flex justify-center">
           <button
-            // onClick={() => navigate("/login")}
+            onClick={() => navigate("/login")}
             className="bg-pink-700 hover:bg-pink-600 text-white font-semibold py-3 px-8 rounded-full text-lg shadow transition duration-300 w-full sm:w-auto"
           >
             Get Started

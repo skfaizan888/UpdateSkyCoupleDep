@@ -4,13 +4,8 @@ import { SearchContext } from "./SearchContext";
 import { CardItem } from "./CardItem";
 
 export const Cards = () => {
-  const {
-    searchTerm,
-    selectedCity,
-    favUserIds,
-    currentSignid,
-    isLoadingUser,
-  } = useContext(SearchContext);
+  const { searchTerm, selectedCity, favUserIds, currentSignid, isLoadingUser } =
+    useContext(SearchContext);
 
   const [allUsers, setAllUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
@@ -18,7 +13,6 @@ export const Cards = () => {
   const [loading, setLoading] = useState(true);
 
   const cardsPerPage = 8;
-
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -66,7 +60,7 @@ export const Cards = () => {
   if (isLoadingUser || !currentSignid) {
     return (
       <div className="flex justify-center items-center h-40">
-        <div className="animate-spin h-10 w-10 border-t-4 border-b-4 border-gray-500 rounded-full"></div>
+        <div className="animate-spin h-10 w-10 border-t-4 border-b-4 border-red-700 rounded-full"></div>
       </div>
     );
   }
@@ -102,7 +96,9 @@ export const Cards = () => {
                 Page {currentPage} of {totalPages}
               </span>
               <button
-                onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                onClick={() =>
+                  setCurrentPage((p) => Math.min(p + 1, totalPages))
+                }
                 disabled={currentPage === totalPages}
                 className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
               >

@@ -48,18 +48,18 @@ export const Login = () => {
     }
 
     try {
-      const { data } = await axios.post("https://skycouple-api.vercel.app/login", {
-        mobile,
-        password,
-      });
+      const { data } = await axios.post(
+        "https://skycouple-api.vercel.app/login",
+        {
+          mobile,
+          password,
+        }
+      );
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("signid", data.signid);
-
-      // ✅ Immediately fetch user and favorites after login
       await refreshUserData();
-
-      navigate("/");
+      navigate("/profile");
     } catch (e) {
       setError(e?.response?.data || "Login failed. Please try again.");
       setInputError({ mobile: true, password: true });

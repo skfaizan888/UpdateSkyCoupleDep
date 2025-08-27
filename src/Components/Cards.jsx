@@ -35,7 +35,6 @@ export const Cards = () => {
     fetchUsers();
   }, [currentSignid]);
 
-  // Filter users based on search and city
   useEffect(() => {
     const filtered = allUsers.filter((user) => {
       const matchesSearch =
@@ -60,7 +59,9 @@ export const Cards = () => {
   if (isLoadingUser || !currentSignid) {
     return (
       <div className="flex justify-center items-center h-40">
-        <div className="animate-spin h-10 w-10 border-t-4 border-b-4 border-red-700 rounded-full"></div>
+        <div className="animate-spin h-10 w-10 border-t-4 border-b-4 border-red-700 rounded-full">
+          Faizan Home Page
+        </div>
       </div>
     );
   }

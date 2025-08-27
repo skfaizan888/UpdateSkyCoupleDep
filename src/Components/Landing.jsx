@@ -1,7 +1,7 @@
+// Landing.jsx
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Cards } from "./Cards";
-import { Navigate } from "./Navigate";
 import { Login } from "./Login";
 import { Viewcards } from "./Viewcards";
 import { Favorites } from "./Favorites";
@@ -11,24 +11,70 @@ import { Home } from "./Home";
 import { UserProfile } from "./UserProfile";
 import { MyProfile } from "./MyProfile";
 import { TermsCondition } from "./TermCondition";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 
 export const Landing = () => {
   return (
-    <div>
-      <BrowserRouter>
-        <Home />
-        <Routes>
-          <Route path="/" element={<Cards />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/getstart" element={<ProfileStart />} />
-          <Route path="viewdetail" element={<Viewcards />} />
-          <Route path="profile" element={<UserProfile />} />
-          <Route path="favorate" element={<Favorites />} />
-          <Route path="myprofile" element={<MyProfile />} />
-          <Route path="term&condition" element={<TermsCondition />} />
-        </Routes>
-        <BottomNav />
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/getstart" element={<ProfileStart />} />
+        <Route path="/term&condition" element={<TermsCondition />} />
+
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cards"
+          element={
+            <ProtectedRoute>
+              <Cards />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/viewdetail"
+          element={
+            <ProtectedRoute>
+              <Viewcards />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <UserProfile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/favorate"
+          element={
+            <ProtectedRoute>
+              <Favorites />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/myprofile"
+          element={
+            <ProtectedRoute>
+              <MyProfile />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+
+      {/* bottom nav can be made conditional if you don’t want it on login */}
+      <BottomNav />
+    </BrowserRouter>
   );
 };

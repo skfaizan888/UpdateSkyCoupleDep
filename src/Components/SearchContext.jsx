@@ -27,10 +27,12 @@ export const SearchProvider = ({ children }) => {
   const fetchCurrentSignId = async () => {
     setIsLoadingUser(true);
     try {
-      const res = await axios.post("https://skycouple-api.vercel.app/findsign", {
-        signid,
-      });
-      setCurrentSignid(res.data[0]);
+      const res = await axios.post("https://skycouple-api.vercel.app/findsign", { signid });
+      if (Array.isArray(res.data) && res.data.length > 0) {
+        setCurrentSignid(res.data[0]);
+      } else {
+        setCurrentSignid(null);
+      }
     } catch (err) {
       console.error("Error fetching current user:", err);
       setCurrentSignid(null);
@@ -41,11 +43,14 @@ export const SearchProvider = ({ children }) => {
 
   const fetchFavorites = async () => {
     try {
-      const res = await axios.post("https://skycouple-api.vercel.app/getfavorites", {
-        signid,
-      });
-      setFavorites(res.data);
-      setFavUserIds(res.data.map((f) => String(f.userid)));
+      const res = await axios.post("https://skycouple-api.vercel.app/getfavorites", { signid });
+      if (Array.isArray(res.data)) {
+        setFavorites(res.data);
+        setFavUserIds(res.data.map((f) => String(f.userid)));
+      } else {
+        setFavorites([]);
+        setFavUserIds([]);
+      }
     } catch (err) {
       console.error("Error fetching favorites:", err);
       setFavorites([]);

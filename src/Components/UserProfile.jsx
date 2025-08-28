@@ -24,7 +24,7 @@ export const UserProfile = () => {
 
     localStorage.removeItem("token");
     localStorage.removeItem("signid");
-    navigate("/getstart");
+    navigate("/login");
   };
 
   

@@ -21,7 +21,6 @@ export const Landing = () => {
         <Route path="/getstart" element={<ProfileStart />} />
         <Route path="/term&condition" element={<TermsCondition />} />
 
-        {/* Home is now a layout wrapper */}
         <Route
           path="/"
           element={

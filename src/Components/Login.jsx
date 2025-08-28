@@ -82,38 +82,40 @@ export const Login = () => {
       <div
         className="
           relative z-10 w-full max-w-6xl mx-auto flex flex-col lg:flex-row
-          items-center justify-center gap-12 
-          py-12 px-4 
-          md:fixed md:inset-0 md:flex md:items-center md:justify-center
+          items-center justify-center gap-8 sm:gap-12 
+          py-10 sm:py-12 px-4
         "
       >
+        {/* Left side: WELCOME */}
         <div className="text-center text-white px-4 flex-1">
           <img
             src="https://static.vecteezy.com/system/resources/thumbnails/047/937/290/small/realistic-wedding-rings-with-flowers-element-free-png.png"
             alt="Wedding Rings"
-            className="w-36 sm:w-40 md:w-44 lg:w-48 mx-auto"
+            className="w-24 sm:w-36 md:w-44 lg:w-48 mx-auto mb-4"
           />
 
-          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-8xl font-extrabold font-[Dancing Script] mb-4 drop-shadow-xl tracking-wide uppercase text-center">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-extrabold font-[Dancing Script] mb-3 sm:mb-4 drop-shadow-xl tracking-wide uppercase text-center">
             WELCOME
           </h1>
 
-          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-md mx-auto tracking-wide leading-relaxed text-center">
+          <p className="text-sm sm:text-base md:text-xl text-gray-300 max-w-md mx-auto tracking-wide leading-relaxed text-center">
             Enter your mobile number and <br /> password below to get access!
           </p>
         </div>
 
+        {/* Right side: Login Card */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
             handleSubmit();
           }}
-          className="w-full max-w-sm bg-white/10 shadow-2xl p-8 text-white rounded-xl backdrop-blur-lg"
+          className="w-11/12 max-w-xs sm:max-w-sm bg-white/10 shadow-2xl p-6 sm:p-8 text-white rounded-xl backdrop-blur-lg"
         >
-          <h2 className="text-4xl font-bold text-center font-[Dancing Script] mb-6 tracking-wider">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center font-[Dancing Script] mb-5 sm:mb-6 tracking-wider">
             Login
           </h2>
 
+          {/* Mobile Number */}
           <label className="block mb-1 text-sm font-medium">
             Mobile Number <span className="text-red-400">*</span>
           </label>
@@ -130,6 +132,7 @@ export const Login = () => {
             `}
           />
 
+          {/* Password */}
           <label className="block mb-1 text-sm font-medium mt-4">
             Password <span className="text-red-400">*</span>
           </label>
@@ -154,6 +157,7 @@ export const Login = () => {
             </button>
           </div>
 
+          {/* Login Button */}
           <Button
             type="submit"
             className="w-full mt-6 bg-pink-700 text-white font-semibold rounded-full shadow-md hover:bg-pink-800"

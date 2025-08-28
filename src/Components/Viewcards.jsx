@@ -1,5 +1,5 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import CustomCarousel from "./CustomCarousel ";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import {
@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 
 export const Viewcards = () => {
+  const navigate = useNavigate();
   const { state: item } = useLocation();
 
   const handleInterested = () => {
@@ -20,11 +21,20 @@ export const Viewcards = () => {
     }
   };
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate]);
   return (
     <div className="min-h-[90vh] bg-gradient-to-br from-gray-100 to-blue-50 py-4 px-3 sm:px-6 font-poppins">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
         <div className="relative w-full h-[470px] sm:h-[500px] lg:h-full rounded-2xl overflow-hidden shadow-lg">
-          <CustomCarousel images={item.img} interval={7000} />
+          <CustomCarousel
+            images={[{ img: item.img, gender: item.gender || "male" }]}
+            interval={7000}
+          />
 
           <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/70 to-transparent z-10" />
 
@@ -41,7 +51,7 @@ export const Viewcards = () => {
 
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-24">
           <div className="text-center mb-5">
-            <h2 className="text-3xl font-bold text-pink-700">
+            <h2 className="text-2xl font-bold text-pink-700">
               {item.fullname}
             </h2>
           </div>
@@ -97,7 +107,7 @@ export const Viewcards = () => {
               <div className="sm:col-span-2 space-y-2">
                 <div className="flex flex-col sm:flex-row sm:gap-10">
                   <p>
-                    <strong>Brothers:</strong> {item.brothers}
+                    <strong>Brothers:</strong> {item.brother}
                   </p>
                   <p>
                     <strong>Sisters:</strong> {item.sister}

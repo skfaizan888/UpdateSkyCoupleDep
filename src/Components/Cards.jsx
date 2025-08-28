@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { SearchContext } from "./SearchContext";
 import { CardItem } from "./CardItem";
@@ -6,7 +6,7 @@ import { CardItem } from "./CardItem";
 export const Cards = () => {
   const { searchTerm, selectedCity, favUserIds, currentSignid, isLoadingUser } =
     useContext(SearchContext);
-
+  const effectRan = useRef(false);
   const [allUsers, setAllUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,16 +15,18 @@ export const Cards = () => {
   const cardsPerPage = 8;
 
   useEffect(() => {
+    if (effectRan.current) return;
+    effectRan.current = true;
+
     const fetchUsers = async () => {
       if (!currentSignid) return;
-
       setLoading(true);
       try {
-        const res = await axios.get("https://skycouple-api.vercel.app/alluser");
-        const oppositeGenderUsers = res.data.filter(
-          (user) => user.isActive && user.gender !== currentSignid.gender
+        const res = await axios.post(
+          "https://skycouple-api.vercel.app/findoppositeusers",
+          { currentGender: currentSignid.gender }
         );
-        setAllUsers(oppositeGenderUsers);
+        setAllUsers(res.data);
       } catch (error) {
         console.error("Failed to fetch users:", error);
       } finally {

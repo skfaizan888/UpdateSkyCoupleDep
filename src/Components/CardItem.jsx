@@ -55,9 +55,21 @@ export const CardItem = ({ item, favUserIds = [] }) => {
       onClick={handleCardClick}
     >
       <img
-        src={item?.img}
-        alt={item?.fullname}
+        src={
+          item.img
+            ? item.img
+            : item.gender && item.gender.toLowerCase().trim() === "female"
+            ? "https://cdn-icons-png.flaticon.com/512/195/195072.png"
+            : "https://static.everypixel.com/ep-pixabay/0329/8099/0858/84037/3298099085884037069-head.png"
+        }
+        alt={item.fullname || "Profile Image"}
         className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
+        onError={(e) => {
+          e.currentTarget.src =
+            item.gender && item.gender.toLowerCase().trim() === "female"
+              ? "https://cdn-icons-png.flaticon.com/512/195/195072.png"
+              : "https://static.everypixel.com/ep-pixabay/0329/8099/0858/84037/3298099085884037069-head.png";
+        }}
       />
 
       <div
@@ -75,17 +87,17 @@ export const CardItem = ({ item, favUserIds = [] }) => {
       </div>
 
       <div className="absolute bottom-0 left-0 w-full p-4 bg-black/50 text-white">
-        <h3 className="text-lg font-semibold leading-tight truncate">
-          {item?.fullname}
+         <h3 className="text-2xl font-bold font-raleway truncate">
+          {item?.fullname || "Unknown Name"}
         </h3>
         <div className="flex items-center gap-1 text-sm text-gray-200 mt-1 truncate">
           <HiOutlineLocationMarker className="text-base" />
           <span>
-            {item?.city}, {item?.pincode}
+            {item?.city || "Unknown City"}, {item?.pincode || "000000"}
           </span>
         </div>
         <p className="text-sm text-gray-100 mt-1 truncate">
-          {item?.occupation}
+          {item?.occupation || "Not Provided"}
         </p>
       </div>
     </div>

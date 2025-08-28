@@ -4,6 +4,6 @@ import flowbiteReact from "flowbite-react/plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  base: '/',   // ✅ For Vercel deployment (root)
+  base: '/',
   plugins: [react(), flowbiteReact(), tailwindcss()]
 });

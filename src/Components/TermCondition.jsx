@@ -1,11 +1,21 @@
+import { useEffect } from "react";
 import {
   FaShieldAlt,
   FaUserCheck,
   FaExclamationTriangle,
   FaLock,
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export const TermsCondition = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate]);
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-100 flex flex-col items-center px-4 pt-10 pb-20">
       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8">

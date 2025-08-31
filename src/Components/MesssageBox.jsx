@@ -16,8 +16,16 @@ export const MesssageBox = () => {
   const [messages, setMessages] = useState([]);
   const [conversationprofile, setConversationprofile] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  console.log(conversationprofile, "---------conversationprofile-");
+  // ✅ safe initials generator with fallback
+  const getInitials = (name = "") => {
+    if (!name || typeof name !== "string") return "U";
+    const parts = name.trim().split(" ").filter(Boolean);
+    if (parts.length === 0) return "U";
+    if (parts.length === 1) return parts[0][0]?.toUpperCase() || "U";
+    return (parts[0][0] + parts[1][0]).toUpperCase();
+  };
 
-  
   const handleSendMesssage = async () => {
     if (!message.trim()) return;
     const payload = {
@@ -36,19 +44,18 @@ export const MesssageBox = () => {
       if (!conversationprofile) {
         setConversationprofile({
           conversationId: res.data.conversationId,
-          userdata: item,
+          userdata: res.data?.userdata || item,
         });
         fetchConversation();
       }
 
       setMessage("");
-      fetchMessage(res.data.conversationId, item);
+      fetchMessage(res.data.conversationId, item, receiverId);
     } catch (err) {
       console.error("Error sending message:", err);
     }
   };
 
-  // Fetch all conversations
   const fetchConversation = async () => {
     try {
       const res = await axios.get(
@@ -60,33 +67,33 @@ export const MesssageBox = () => {
     }
   };
 
-  // Fetch messages in conversation
-  const fetchMessage = async (conversationId, userdata) => {
+  const fetchMessage = async (conversationId, userdata, receiverIdParam) => {
     try {
+      const resolvedReceiverId =
+        receiverIdParam || userdata?.signid || receiverId;
+
       const res = await axios.get(
-        `https://skycouple-api.vercel.app/message/${conversationId}?senderId=${currentSignid.signid}&receiverId=${receiverId}`
+        `https://skycouple-api.vercel.app/api/message/${conversationId}?senderId=${currentSignid.signid}&receiverId=${resolvedReceiverId}`
       );
+
       setMessages(res.data);
+      console.log(userdata, "----profile--userdata-------");
       setConversationprofile({ conversationId, userdata });
     } catch (err) {
       console.error("Error fetching messages:", err);
     }
   };
 
-  // Auto-fetch
   useEffect(() => {
     fetchConversation();
     if (receiverId) {
-      fetchMessage("new", { fullname: item?.fullname, signid: receiverId });
+      fetchMessage(
+        "new",
+        { fullname: item?.fullname, signid: receiverId },
+        receiverId
+      );
     }
   }, [receiverId]);
-
-  // Get initials for Avatar
-  const getInitials = (name = "") => {
-    const parts = name.trim().split(" ");
-    if (parts.length === 1) return parts[0][0].toUpperCase();
-    return (parts[0][0] + parts[1][0]).toUpperCase();
-  };
 
   return (
     <div className="flex min-h-[70vh] bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-white">
@@ -99,7 +106,7 @@ export const MesssageBox = () => {
           <input
             type="text"
             placeholder="Search conversation..."
-            className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-slate-700 bg-white  focus:outline-none"
+            className="w-full px-4 py-2 rounded-xl border border-gray-300 dark:border-slate-700 bg-white focus:outline-none"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -121,7 +128,9 @@ export const MesssageBox = () => {
                 .map(({ conversationId, userdata }) => (
                   <button
                     key={conversationId}
-                    onClick={() => fetchMessage(conversationId, userdata)}
+                    onClick={() =>
+                      fetchMessage(conversationId, userdata, userdata?.signid)
+                    }
                     className="w-full text-left px-4 py-3 hover:bg-indigo-50 dark:hover:bg-slate-800 flex items-center gap-3"
                   >
                     <Avatar
@@ -181,7 +190,7 @@ export const MesssageBox = () => {
           </div>
         )}
 
-        <div className="flex-1 overflow-y-auto p-4 space-y-3 no-scrollbar md:h-[70vh]">
+        <div className="overflow-y-auto p-4 space-y-3 no-scrollbar h-[70vh]">
           {messages.length > 0 ? (
             messages.map((item, i) => {
               const isMine = item.userdata?.signid === currentSignid.signid;

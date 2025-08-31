@@ -12,6 +12,7 @@ import { UserProfile } from "./UserProfile";
 import { MyProfile } from "./MyProfile";
 import { TermsCondition } from "./TermCondition";
 import ProtectedRoute from "./ProtectedRoute.jsx";
+import {MesssageBox} from "./MesssageBox.jsx";
 
 export const Landing = () => {
   return (
@@ -31,10 +32,10 @@ export const Landing = () => {
         >
           <Route index element={<Cards />} />
           <Route path="viewdetail" element={<Viewcards />} />
+          <Route path="/chat" element={<MesssageBox />} />
           <Route path="/favorate" element={<Favorites />}>
             <Route path="viewdetail" element={<Viewcards />} />
           </Route>
-
           <Route path="profile" element={<UserProfile />} />
 
           <Route path="myprofile" element={<MyProfile />} />

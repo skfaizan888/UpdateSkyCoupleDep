@@ -12,7 +12,7 @@ const BottomNav = () => {
   const navItems = [
     { icon: <FiHome />, path: "/" },
     { icon: <FiHeart />, path: "/favorate" },
-    { icon: <FiMessageCircle /> },
+    { icon: <FiMessageCircle /> ,path:"/chat"},
     { icon: <FiUser />, path: "/profile" },
   ];
   useEffect(() => {

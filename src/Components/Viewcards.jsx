@@ -15,12 +15,6 @@ export const Viewcards = () => {
   const navigate = useNavigate();
   const { state: item } = useLocation();
 
-  const handleInterested = () => {
-    if (window.confirm("Are you sure you're interested?")) {
-      alert("Interest confirmed!");
-    }
-  };
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -40,12 +34,13 @@ export const Viewcards = () => {
 
           <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20">
             <button
-              onClick={handleInterested}
-              className="flex items-center gap-2 bg-pink-700 text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
-            >
-              <IoChatbubbleEllipsesOutline className="h-5 w-5" />
-              Chat
-            </button>
+  onClick={() => navigate("/chat", { state: { item } })}
+  className="flex items-center gap-2 bg-pink-700 text-white font-semibold px-6 py-2 rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
+>
+  <IoChatbubbleEllipsesOutline className="h-5 w-5" />
+  Chat
+</button>
+
           </div>
         </div>
 

@@ -86,7 +86,6 @@ export const Login = () => {
           py-10 sm:py-12 px-4
         "
       >
-        {/* Left side: WELCOME */}
         <div className="text-center text-white px-4 flex-1">
           <img
             src="https://static.vecteezy.com/system/resources/thumbnails/047/937/290/small/realistic-wedding-rings-with-flowers-element-free-png.png"
@@ -103,7 +102,6 @@ export const Login = () => {
           </p>
         </div>
 
-        {/* Right side: Login Card */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -115,7 +113,6 @@ export const Login = () => {
             Login
           </h2>
 
-          {/* Mobile Number */}
           <label className="block mb-1 text-sm font-medium">
             Mobile Number <span className="text-red-400">*</span>
           </label>
@@ -132,7 +129,6 @@ export const Login = () => {
             `}
           />
 
-          {/* Password */}
           <label className="block mb-1 text-sm font-medium mt-4">
             Password <span className="text-red-400">*</span>
           </label>
@@ -157,7 +153,6 @@ export const Login = () => {
             </button>
           </div>
 
-          {/* Login Button */}
           <Button
             type="submit"
             className="w-full mt-6 bg-pink-700 text-white font-semibold rounded-full shadow-md hover:bg-pink-800"

@@ -51,7 +51,7 @@ export const CardItem = ({ item, favUserIds = [] }) => {
 
   return (
     <div
-      className="w-full h-[51vh] sm:h-[370px] md:h-[400px] rounded-2xl overflow-hidden relative shadow-lg cursor-pointer group bg-white"
+      className="w-full h-[380px] sm:h-[370px] md:h-[400px] rounded-2xl overflow-hidden relative shadow-lg cursor-pointer group bg-white"
       onClick={handleCardClick}
     >
       <img
@@ -87,7 +87,7 @@ export const CardItem = ({ item, favUserIds = [] }) => {
       </div>
 
       <div className="absolute bottom-0 left-0 w-full p-4 bg-black/50 text-white">
-        <h3 className="text-2xl font-bold font-raleway truncate">
+         <h3 className="text-2xl font-bold font-raleway truncate">
           {item?.fullname || "Unknown Name"}
         </h3>
         <div className="flex items-center gap-1 text-sm text-gray-200 mt-1 truncate">

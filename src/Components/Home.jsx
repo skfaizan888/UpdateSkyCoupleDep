@@ -24,8 +24,9 @@ export const Home = () => {
   return (
     <>
       {isTokenPresent && (
-        <>
-          <div className="relative w-full text-white overflow-visible">
+        <div className="flex flex-col h-screen">
+          {/* 🔹 Fixed Top Header */}
+          <div className="relative w-full text-white overflow-visible sticky top-0 z-50">
             <div
               className="absolute inset-0 bg-cover bg-center"
               style={{
@@ -66,10 +67,12 @@ export const Home = () => {
               {isHome && <CustomSearchDropdown handleSearch={handleSearch} />}
             </div>
           </div>
-          <div className="relative z-10 px-4 pb-10">
+
+          {/* 🔹 Scrollable Content */}
+          <div className="flex-1 overflow-y-auto px-4 pb-10 bg-white">
             <Outlet />
           </div>
-        </>
+        </div>
       )}
     </>
   );

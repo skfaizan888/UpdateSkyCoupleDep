@@ -86,14 +86,30 @@ export const Cards = () => {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 place-items-center pb-8">
+          <div className="flex flex-col overflow-y-scroll snap-y snap-mandatory h-screen sm:hidden scroll-smooth no-scrollbar">
+            {filteredUsers.map((user) => (
+              <div
+                key={user.userid}
+                className="snap-start flex justify-center items-center h-screen w-full mb-4"
+              >
+                <CardItem
+                  item={user}
+                  favUserIds={favUserIds}
+                  className="w-full h-full"
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: Grid with pagination */}
+          <div className="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-6 place-items-center pb-8">
             {currentCards.map((user) => (
               <CardItem key={user.userid} item={user} favUserIds={favUserIds} />
             ))}
           </div>
 
           {totalPages > 1 && (
-            <div className="flex justify-center items-center gap-4 my-6">
+            <div className="hidden sm:flex justify-center items-center gap-4 my-6">
               <button
                 onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
                 disabled={currentPage === 1}

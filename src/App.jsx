@@ -1,6 +1,5 @@
 import { Landing } from "./Components/Landing";
-import { Login } from "./Components/Login";
-import { ProfileStart } from "./Components/ProfileStart";
+
 import { SearchProvider } from "./Components/SearchContext";
 
 function App() {
